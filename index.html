@@ -1,179 +1,138 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio - Muhamad Tajudin (Bugy)</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-teal-100 to-teal-200 text-gray-800 font-poppins">
     <!-- Sliding Menu -->
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
+    <button class="fixed top-6 left-6 text-white bg-blue-600 p-2 rounded-md hover:bg-blue-700 focus:outline-none z-50" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
     </button>
-    <nav class="sidebar" id="sidebar">
-      <ul>
-        <li><a href="#tentang-saya">Tentang Saya</a></li>
-        <li><a href="#pengalaman">Pengalaman</a></li>
-        <li><a href="#keterampilan">Keterampilan</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
+    <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-blue-600 text-white p-6 transform -translate-x-full transition-transform duration-300 ease-in-out z-40">
+        <ul class="space-y-6">
+            <li><a href="#tentang-saya" class="block px-4 py-2 rounded-md hover:bg-blue-400">Tentang Saya</a></li>
+            <li><a href="#pengalaman" class="block px-4 py-2 rounded-md hover:bg-blue-400">Pengalaman</a></li>
+            <li><a href="#keterampilan" class="block px-4 py-2 rounded-md hover:bg-blue-400">Keterampilan</a></li>
+            <li><a href="#kontak" class="block px-4 py-2 rounded-md hover:bg-blue-400">Kontak</a></li>
+        </ul>
     </nav>
 
+    <!-- Overlay for better usability when menu is open -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30" onclick="toggleMenu()"></div>
+
     <!-- Main Content -->
-    <header>
-      <div class="container">
-        <img
-          src="https://via.placeholder.com/150"
-          alt="Foto Profil"
-          class="profile-img"
-        />
-        <h1>Muhamad Tajudin</h1>
-        <p class="subtitle">Pengembang Full Stack & Spesialis IT</p>
-      </div>
+    <header class="text-center py-12 bg-white bg-opacity-90 rounded-xl shadow-lg mx-6 mb-8">
+        <div class="container mx-auto">
+            <img src="https://via.placeholder.com/150" alt="Foto Profil" class="w-36 h-36 mx-auto rounded-full border-4 border-blue-600 hover:scale-105 transition-transform duration-300">
+            <h1 class="text-4xl font-bold text-blue-700 mt-4">Muhamad Tajudin</h1>
+            <p class="text-xl text-gray-600">Pengembang Full Stack & Spesialis IT</p>
+        </div>
     </header>
 
-    <section class="section" id="tentang-saya">
-      <div class="container">
-        <h2 class="section-title">Tentang Saya</h2>
-        <div class="profile-info">
-          <div class="intro">
-            <p>
-              Halo! Saya Muhamad Tajudin, yang juga dikenal sebagai Bugy,
-              seorang Pengembang Full Stack dan Spesialis IT yang bersemangat,
-              berbasis di Bandung, Indonesia. Dengan fondasi yang kuat dalam
-              pengembangan front-end dan back-end, saya senang menciptakan
-              solusi yang efisien dan ramah pengguna. Perjalanan saya di dunia
-              teknologi dimulai lebih dari satu dekade lalu, dan sejak itu saya
-              telah mengasah keterampilan saya di berbagai teknologi sambil
-              bekerja di berbagai peran.
-            </p>
-            <p>
-              Saya adalah seorang profesional yang berdedikasi, menyukai
-              tantangan dalam memecahkan masalah kompleks, dan terus belajar
-              keterampilan baru. Di waktu luang, saya menikmati mengajar orang
-              lain tentang teknologi dan menjelajahi tren terbaru di industri
-              ini. Saya percaya pada kekuatan inovasi dan berusaha memberikan
-              kontribusi positif melalui pekerjaan saya.
-            </p>
-          </div>
-          <div>
-            <h3>Detail Pribadi</h3>
-            <p>🌍 Bandung, Indonesia</p>
-            <p>📆 Lahir: 27 Februari 1995</p>
-            <p>📚 Pendidikan: SMA 1 Negeri Cipeundeuy</p>
-          </div>
-          <div>
-            <h3>Informasi Kontak</h3>
-            <p>📞 087879643895</p>
-            <p>📧 bugidot@gmail.com</p>
-          </div>
+    <section id="tentang-saya" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Tentang Saya</h2>
+        <div class="profile-info space-y-6">
+            <div class="intro text-justify">
+                <p class="text-gray-700">Halo! Saya Muhamad Tajudin, yang juga dikenal sebagai Bugy, seorang Pengembang Full Stack dan Spesialis IT yang bersemangat, berbasis di Bandung, Indonesia. Dengan fondasi yang kuat dalam pengembangan front-end dan back-end, saya senang menciptakan solusi yang efisien dan ramah pengguna. Perjalanan saya di dunia teknologi dimulai lebih dari satu dekade lalu, dan sejak itu saya telah mengasah keterampilan saya di berbagai teknologi sambil bekerja di berbagai peran.</p>
+                <p class="text-gray-700">Saya adalah seorang profesional yang berdedikasi, menyukai tantangan dalam memecahkan masalah kompleks, dan terus belajar keterampilan baru. Di waktu luang, saya menikmati mengajar orang lain tentang teknologi dan menjelajahi tren terbaru di industri ini. Saya percaya pada kekuatan inovasi dan berusaha memberikan kontribusi positif melalui pekerjaan saya.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-blue-700">Detail Pribadi</h3>
+                <p class="text-gray-600">🌍 Bandung, Indonesia</p>
+                <p class="text-gray-600">📆 Lahir: 27 Februari 1995</p>
+                <p class="text-gray-600">📚 Pendidikan: SMA 1 Negeri Cipeundeuy</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-blue-700">Informasi Kontak</h3>
+                <p class="text-gray-600">📞 087879643895</p>
+                <p class="text-gray-600">📧 bugidot@gmail.com</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section" id="pengalaman">
-      <div class="container">
-        <h2 class="section-title">Pengalaman</h2>
-        <div class="experience-container">
-          <div class="experience-item">
-            <h3>Dukungan IT Senior</h3>
-            <p>Pt Indomarco Prismatama</p>
-            <p>📅 2013 - Sekarang</p>
-          </div>
-          <div class="experience-item">
-            <h3>Admin Gudang Pabrik Tekstil</h3>
-            <p>📅 2012 - 2012</p>
-          </div>
-          <div class="experience-item">
-            <h3>Pengajar Home Learning Komputer</h3>
-            <p>📅 2013 - 2013</p>
-          </div>
-          <div class="experience-item">
-            <h3>Pengajar Kursus LPK</h3>
-            <p>📅 2012 - 2013</p>
-          </div>
+    <section id="pengalaman" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Pengalaman</h2>
+        <div class="experience-container space-y-4">
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-lg font-medium">Dukungan IT Senior</h3>
+                <p class="text-gray-600">Pt Indomarco Prismatama</p>
+                <p class="text-gray-600">📅 2013 - Sekarang</p>
+            </div>
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-lg font-medium">Admin Gudang Pabrik Tekstil</h3>
+                <p class="text-gray-600">📅 2012 - 2012</p>
+            </div>
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-lg font-medium">Pengajar Home Learning Komputer</h3>
+                <p class="text-gray-600">📅 2013 - 2013</p>
+            </div>
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+                <h3 class="text-lg font-medium">Pengajar Kursus LPK</h3>
+                <p class="text-gray-600">📅 2012 - 2013</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section" id="keterampilan">
-      <div class="container">
-        <h2 class="section-title">Keterampilan</h2>
-        <div class="skills-container">
-          <div class="skill-item">
-            <i class="fas fa-globe"></i> Pengembangan Web
-          </div>
-          <div class="skill-item">
-            <i class="fas fa-desktop"></i> Aplikasi Desktop
-          </div>
-          <div class="skill-item"><i class="fab fa-php"></i> PHP</div>
-          <div class="skill-item"><i class="fab fa-laravel"></i> Laravel</div>
-          <div class="skill-item"><i class="fas fa-code"></i> CodeIgniter</div>
-          <div class="skill-item"><i class="fas fa-database"></i> MySQL</div>
-          <div class="skill-item">
-            <i class="fas fa-database"></i> PostgreSQL
-          </div>
-          <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
-          <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
-          <div class="skill-item">
-            <i class="fas fa-network-wired"></i> Jaringan IP4
-          </div>
-          <div class="skill-item">
-            <i class="fas fa-video"></i> Operator CCTV
-          </div>
+    <section id="keterampilan" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Keterampilan</h2>
+        <div class="skills-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-globe"></i> Pengembangan Web</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-desktop"></i> Aplikasi Desktop</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-php"></i> PHP</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-laravel"></i> Laravel</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-code"></i> CodeIgniter</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-database"></i> MySQL</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-database"></i> PostgreSQL</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-html5"></i> HTML</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-network-wired"></i> Jaringan IP4</div>
+            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-video"></i> Operator CCTV</div>
         </div>
-      </div>
     </section>
 
-    <section class="section" id="kontak">
-      <div class="container">
-        <h2 class="section-title">Kontak</h2>
-        <div class="contact-info">
-          <div class="contact-card">
-            <h3>📞 Hubungi Saya</h3>
-            <p>087879643895</p>
-          </div>
-          <div class="contact-card">
-            <h3>📧 Email Saya</h3>
-            <p>bugidot@gmail.com</p>
-          </div>
+    <section id="kontak" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Kontak</h2>
+        <div class="contact-info grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="contact-card p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 text-center">
+                <h3 class="text-lg font-medium">📞 Hubungi Saya</h3>
+                <p class="text-gray-600">087879643895</p>
+            </div>
+            <div class="contact-card p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 text-center">
+                <h3 class="text-lg font-medium">📧 Email Saya</h3>
+                <p class="text-gray-600">bugidot@gmail.com</p>
+            </div>
         </div>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="https://www.tiktok.com/@_bugy27?_t=ZS-8wBS9n8WIbq&_r=1"
-            ><i class="fab fa-tiktok"></i
-          ></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="social-links flex justify-center gap-6 mt-6">
+            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-github"></i></a>
+            <a href="https://www.tiktok.com/@_bugy27?_t=ZS-8wBS9n8WIbq&_r=1" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-instagram"></i></a>
         </div>
-      </div>
     </section>
 
     <script>
-      function toggleMenu() {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("active");
-      }
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
 
-      // Smooth scroll for menu links
-      document.querySelectorAll(".sidebar a").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href").substring(1);
-          const targetElement = document.getElementById(targetId);
-          targetElement.scrollIntoView({ behavior: "smooth" });
-          toggleMenu(); // Close menu after clicking
+        // Smooth scroll for menu links
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                toggleMenu(); // Close menu after clicking
+            });
         });
-      });
     </script>
-  </body>
+</body>
 </html>
