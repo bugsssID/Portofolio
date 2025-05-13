@@ -7,9 +7,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #d1fae5, #99f6e4);
+        }
+        section, header {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            color: #1e3a8a;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+        }
+        .skill-item:hover {
+            background-color: rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+            color: #2563eb;
+        }
+        .experience-item:hover {
+            transform: scale(1.02);
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-teal-100 to-teal-200 text-gray-800 font-poppins">
-    <!-- Sliding Menu -->
+<body class="text-gray-800">
+    <!-- Menu -->
     <button class="fixed top-6 left-6 text-white bg-blue-600 p-2 rounded-md hover:bg-blue-700 focus:outline-none z-50" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
     </button>
@@ -22,11 +48,9 @@
             <li><a href="#kontak" class="block px-4 py-2 rounded-md hover:bg-blue-400">Kontak</a></li>
         </ul>
     </nav>
-
-    <!-- Overlay for better usability when menu is open -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30" onclick="toggleMenu()"></div>
 
-    <!-- Main Content -->
+    <!-- Header -->
     <header class="text-center py-12 bg-white bg-opacity-90 rounded-xl shadow-lg mx-6 mb-8">
         <div class="container mx-auto">
             <img src="https://via.placeholder.com/150" alt="Foto Profil" class="w-36 h-36 mx-auto rounded-full border-4 border-blue-600 hover:scale-105 transition-transform duration-300">
@@ -35,20 +59,21 @@
         </div>
     </header>
 
-    <!-- Ringkasan Section -->
+    <!-- Ringkasan -->
     <section id="ringkasan" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
         <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Ringkasan</h2>
-        <div class="text-justify text-gray-700">
-            <p>Saya memiliki pengalaman unik sebagai operator CCTV yang mengasah ketelitian dan kemampuan analisis saya dalam memantau dan mengelola sistem keamanan, sebuah keahlian yang saya padukan dengan keahlian IT saya untuk memberikan solusi teknologi yang holistik. Ambisi saya adalah menjadi seorang pengembang terkemuka yang mampu menciptakan aplikasi inovatif yang berdampak positif bagi masyarakat, terutama di bidang teknologi informasi. Kelebihan saya terletak pada kemampuan beradaptasi dengan cepat terhadap teknologi baru, pengalaman lebih dari satu dekade di bidang IT, serta semangat untuk terus belajar dan berbagi pengetahuan melalui pengajaran.</p>
-        </div>
+        <p class="text-justify text-gray-700">
+            Saya memiliki pengalaman unik sebagai operator CCTV yang mengasah ketelitian dan kemampuan analisis saya dalam memantau dan mengelola sistem keamanan. Keahlian ini saya padukan dengan kemampuan IT saya untuk memberikan solusi teknologi holistik. Ambisi saya adalah menjadi pengembang terkemuka yang menciptakan aplikasi inovatif dengan dampak positif. Saya cepat beradaptasi dengan teknologi baru, memiliki pengalaman lebih dari satu dekade di bidang IT, dan semangat tinggi untuk terus belajar dan mengajar.
+        </p>
     </section>
 
-    <section id="tentang-saya" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+    <!-- Tentang Saya -->
+    <section id="tentang-saya" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
         <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Tentang Saya</h2>
-        <div class="profile-info space-y-6">
-            <div class="intro text-justify">
-                <p class="text-gray-700">Halo! Saya Muhamad Tajudin, yang juga dikenal sebagai Bugy, seorang Pengembang Full Stack dan Spesialis IT yang bersemangat, berbasis di Bandung, Indonesia. Dengan fondasi yang kuat dalam pengembangan front-end dan back-end, saya senang menciptakan solusi yang efisien dan ramah pengguna. Perjalanan saya di dunia teknologi dimulai lebih dari satu dekade lalu, dan sejak itu saya telah mengasah keterampilan saya di berbagai teknologi sambil bekerja di berbagai peran.</p>
-                <p class="text-gray-700">Saya adalah seorang profesional yang berdedikasi, menyukai tantangan dalam memecahkan masalah kompleks, dan terus belajar keterampilan baru. Di waktu luang, saya menikmati mengajar orang lain tentang teknologi dan menjelajahi tren terbaru di industri ini. Saya percaya pada kekuatan inovasi dan berusaha memberikan kontribusi positif melalui pekerjaan saya.</p>
+        <div class="space-y-6">
+            <div class="text-justify text-gray-700">
+                <p>Halo! Saya Muhamad Tajudin, dikenal juga sebagai Bugy, seorang Pengembang Full Stack dan Spesialis IT yang berbasis di Bandung. Saya memiliki pengalaman dalam pengembangan front-end dan back-end lebih dari satu dekade. Saya senang menciptakan solusi digital yang efisien dan user-friendly.</p>
+                <p>Saya menyukai tantangan, suka mempelajari teknologi baru, dan memiliki hasrat besar dalam mengajar serta berbagi ilmu di bidang IT.</p>
             </div>
             <div>
                 <h3 class="text-lg font-medium text-blue-700">Detail Pribadi</h3>
@@ -64,63 +89,68 @@
         </div>
     </section>
 
-    <section id="pengalaman" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+    <!-- Pengalaman -->
+    <section id="pengalaman" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
         <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Pengalaman</h2>
-        <div class="experience-container space-y-4">
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+        <div class="space-y-4">
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">Dukungan IT Senior</h3>
                 <p class="text-gray-600">Pt Indomarco Prismatama</p>
                 <p class="text-gray-600">📅 2013 - Sekarang</p>
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">Admin Gudang Pabrik Tekstil</h3>
-                <p class="text-gray-600">📅 2012 - 2012</p>
+                <p class="text-gray-600">📅 2012</p>
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">Pengajar Home Learning Komputer</h3>
-                <p class="text-gray-600">📅 2013 - 2013</p>
+                <p class="text-gray-600">📅 2013</p>
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300">
+            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">Pengajar Kursus LPK</h3>
                 <p class="text-gray-600">📅 2012 - 2013</p>
             </div>
         </div>
     </section>
 
-    <section id="keterampilan" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+    <!-- Keterampilan -->
+    <section id="keterampilan" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
         <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Keterampilan</h2>
-        <div class="skills-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-globe"></i> Pengembangan Web</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-desktop"></i> Aplikasi Desktop</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-php"></i> PHP</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-laravel"></i> Laravel</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-code"></i> CodeIgniter</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-database"></i> MySQL</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-database"></i> PostgreSQL</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-html5"></i> HTML</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fab fa-js"></i> JavaScript</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-network-wired"></i> Jaringan IP4</div>
-            <div class="skill-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 flex items-center justify-center"><i class="fas fa-video"></i> Operator CCTV</div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            <div class="skill-item"><i class="fas fa-globe mr-2"></i>Pengembangan Web</div>
+            <div class="skill-item"><i class="fas fa-desktop mr-2"></i>Aplikasi Desktop</div>
+            <div class="skill-item"><i class="fab fa-php mr-2"></i>PHP</div>
+            <div class="skill-item"><i class="fab fa-laravel mr-2"></i>Laravel</div>
+            <div class="skill-item"><i class="fas fa-code mr-2"></i>CodeIgniter</div>
+            <div class="skill-item"><i class="fas fa-database mr-2"></i>MySQL</div>
+            <div class="skill-item"><i class="fas fa-database mr-2"></i>PostgreSQL</div>
+            <div class="skill-item"><i class="fab fa-html5 mr-2"></i>HTML</div>
+            <div class="skill-item"><i class="fab fa-js mr-2"></i>JavaScript</div>
+            <div class="skill-item"><i class="fas fa-network-wired mr-2"></i>Jaringan IP4</div>
+            <div class="skill-item"><i class="fas fa-video mr-2"></i>Operator CCTV</div>
+            <div class="skill-item"><i class="fab fa-react mr-2"></i>Next.js</div>
+            <div class="skill-item"><i class="fas fa-code mr-2"></i>Visual Basic</div>
         </div>
     </section>
 
-    <section id="kontak" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
+    <!-- Kontak -->
+    <section id="kontak" class="container mx-auto px-6 py-8 mt-8 mb-10 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
         <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Kontak</h2>
-        <div class="contact-info grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="contact-card p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">📞 Hubungi Saya</h3>
                 <p class="text-gray-600">087879643895</p>
             </div>
-            <div class="contact-card p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300 text-center">
+            <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition duration-300">
                 <h3 class="text-lg font-medium">📧 Email Saya</h3>
                 <p class="text-gray-600">bugidot@gmail.com</p>
             </div>
         </div>
-        <div class="social-links flex justify-center gap-6 mt-6">
-            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-github"></i></a>
-            <a href="https://www.tiktok.com/@_bugy27?_t=ZS-8wBS9n8WIbq&_r=1" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-tiktok"></i></a>
-            <a href="#" class="text-blue-600 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+        <div class="flex justify-center gap-6 mt-6">
+            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-github"></i></a>
+            <a href="https://www.tiktok.com/@_bugy27?_t=ZS-8wBS9n8WIbq&_r=1" class="text-blue-600 hover:text-blue-400"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-instagram"></i></a>
         </div>
     </section>
 
@@ -131,17 +161,6 @@
             sidebar.classList.toggle('-translate-x-full');
             overlay.classList.toggle('hidden');
         }
-
-        // Smooth scroll for menu links
-        document.querySelectorAll('.sidebar a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-                toggleMenu(); // Close menu after clicking
-            });
-        });
     </script>
 </body>
 </html>
