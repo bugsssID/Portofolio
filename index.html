@@ -1,166 +1,755 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Muhamad Tajudin (Bugy)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhamad Tajudin — Full Stack Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #d1fae5, #99f6e4);
+      :root {
+        --bg: #0a0f1e;
+        --surface: #111827;
+        --surface2: #1a2438;
+        --accent: #00e5ff;
+        --accent2: #7c3aed;
+        --text: #e2e8f0;
+        --muted: #64748b;
+        --border: #1e293b;
+        --tag-bg: #0f2035;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Space Grotesk", sans-serif;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* ——— NOISE TEXTURE ——— */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.5;
+      }
+
+      /* ——— GLOW ——— */
+      .glow-orb {
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.07) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        top: -200px;
+        right: -150px;
+        z-index: 0;
+      }
+      .glow-orb2 {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        bottom: 0;
+        left: -100px;
+        z-index: 0;
+      }
+
+      /* ——— LAYOUT ——— */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ——— HERO ——— */
+      .hero {
+        padding: 80px 0 60px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero-eyebrow {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 32px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 7vw, 72px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -2px;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-role {
+        font-family: "Space Mono", monospace;
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero-role span {
+        color: var(--accent2);
+        font-weight: 700;
+      }
+
+      .hero-summary {
+        max-width: 560px;
+        color: #94a3b8;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 36px;
+      }
+
+      .hero-contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .contact-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 13px;
+        color: var(--text);
+        text-decoration: none;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .contact-pill:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .contact-pill svg {
+        flex-shrink: 0;
+      }
+
+      /* ——— NAV ——— */
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 15, 30, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        display: flex;
+        gap: 4px;
+        padding: 0 24px;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-link {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 16px 14px;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .nav-link:hover {
+        color: var(--text);
+        border-color: var(--accent);
+      }
+
+      /* ——— SECTION ——— */
+      .section {
+        padding: 64px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      .section-label {
+        font-family: "Space Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        margin-bottom: 40px;
+        color: #fff;
+      }
+
+      /* ——— EXPERIENCE ——— */
+      .exp-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px 32px;
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+      .exp-card:hover {
+        border-color: rgba(0, 229, 255, 0.3);
+      }
+      .exp-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, var(--accent), var(--accent2));
+        border-radius: 3px 0 0 3px;
+      }
+
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .exp-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .exp-period {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        color: var(--accent);
+        background: rgba(0, 229, 255, 0.08);
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 229, 255, 0.2);
+        white-space: nowrap;
+      }
+
+      .exp-company {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
+        font-family: "Space Mono", monospace;
+      }
+
+      .exp-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .exp-bullets li {
+        display: flex;
+        gap: 12px;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .exp-bullets li::before {
+        content: "▸";
+        color: var(--accent);
+        flex-shrink: 0;
+        margin-top: 2px;
+        font-size: 12px;
+      }
+
+      /* ——— SKILLS ——— */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-tag {
+        background: var(--tag-bg);
+        border: 1px solid rgba(0, 229, 255, 0.15);
+        border-radius: 6px;
+        padding: 7px 14px;
+        font-size: 13px;
+        font-family: "Space Mono", monospace;
+        color: #94a3b8;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+      }
+      .skill-tag:hover {
+        background: rgba(0, 229, 255, 0.08);
+        color: var(--accent);
+        border-color: rgba(0, 229, 255, 0.4);
+      }
+
+      /* ——— ACHIEVEMENTS ——— */
+      .achievements-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .achievement-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        transition: border-color 0.2s;
+      }
+      .achievement-item:hover {
+        border-color: rgba(124, 58, 237, 0.35);
+      }
+
+      .achievement-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 16px;
+      }
+
+      .achievement-text {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* ——— EDUCATION ——— */
+      .edu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .edu-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 20px 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        transition: border-color 0.2s;
+      }
+      .edu-card:hover {
+        border-color: rgba(0, 229, 255, 0.25);
+      }
+
+      .edu-info {
+      }
+      .edu-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+      .edu-institution {
+        font-size: 12px;
+        font-family: "Space Mono", monospace;
+        color: var(--muted);
+      }
+
+      .edu-badge {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        color: var(--accent);
+        background: rgba(0, 229, 255, 0.08);
+        border: 1px solid rgba(0, 229, 255, 0.2);
+        padding: 4px 10px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      /* ——— COVER LETTER ——— */
+      .letter-box {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      .letter-box::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: 24px;
+        font-size: 120px;
+        font-weight: 700;
+        color: rgba(0, 229, 255, 0.06);
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+      .letter-text {
+        color: #94a3b8;
+        font-size: 14.5px;
+        line-height: 1.9;
+        white-space: pre-line;
+      }
+      .letter-sign {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      /* ——— FOOTER ——— */
+      .footer {
+        padding: 40px 0;
+        text-align: center;
+      }
+      .footer p {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 1px;
+      }
+
+      /* ——— FADE IN ——— */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        section, header {
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        .skill-item {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            color: #1e3a8a;
-            font-weight: 500;
-            transition: all 0.3s ease-in-out;
+      }
+      .hero {
+        animation: fadeUp 0.7s ease both;
+      }
+      .section {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      /* ——— RESPONSIVE ——— */
+      @media (max-width: 600px) {
+        .hero {
+          padding: 48px 0 40px;
         }
-        .skill-item:hover {
-            background-color: rgba(59, 130, 246, 0.3);
-            transform: scale(1.05);
-            color: #2563eb;
+        .section {
+          padding: 48px 0;
         }
-        .experience-item:hover {
-            transform: scale(1.02);
+        .exp-card {
+          padding: 20px;
         }
+        .letter-box {
+          padding: 24px;
+        }
+        .exp-header {
+          flex-direction: column;
+        }
+      }
     </style>
-</head>
-<body class="text-gray-800">
-    <!-- Menu -->
-    <button class="fixed top-6 left-6 text-white bg-blue-600 p-2 rounded-md hover:bg-blue-700 focus:outline-none z-50" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
-    <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-blue-600 text-white p-6 transform -translate-x-full transition-transform duration-300 ease-in-out z-40">
-        <ul class="space-y-6">
-            <li><a href="#ringkasan" class="block px-4 py-2 rounded-md hover:bg-blue-400">Ringkasan</a></li>
-            <li><a href="#tentang-saya" class="block px-4 py-2 rounded-md hover:bg-blue-400">Tentang Saya</a></li>
-            <li><a href="#pengalaman" class="block px-4 py-2 rounded-md hover:bg-blue-400">Pengalaman</a></li>
-            <li><a href="#keterampilan" class="block px-4 py-2 rounded-md hover:bg-blue-400">Keterampilan</a></li>
-            <li><a href="#kontak" class="block px-4 py-2 rounded-md hover:bg-blue-400">Kontak</a></li>
-        </ul>
-    </nav>
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30" onclick="toggleMenu()"></div>
+  </head>
+  <body>
+    <div class="glow-orb"></div>
+    <div class="glow-orb2"></div>
 
-    <!-- Header -->
-    <header class="text-center py-12 bg-white bg-opacity-90 rounded-xl shadow-lg mx-6 mb-8">
-        <div class="container mx-auto">
-            <img src="https://via.placeholder.com/150" alt="Foto Profil" class="w-36 h-36 mx-auto rounded-full border-4 border-blue-600 hover:scale-105 transition-transform duration-300">
-            <h1 class="text-4xl font-bold text-blue-700 mt-4">Muhamad Tajudin</h1>
-            <p class="text-xl text-gray-600">Pengembang Full Stack & Spesialis IT</p>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="container">
+        <div class="hero-eyebrow">Curriculum Vitae</div>
+        <h1>Muhamad<br />Tajudin</h1>
+        <div class="hero-role">
+          <span>//</span> Full Stack Developer &amp; Data Analyst
         </div>
-    </header>
-
-    <!-- Ringkasan -->
-    <section id="ringkasan" class="container mx-auto px-6 py-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Ringkasan</h2>
-        <p class="text-justify text-gray-700">
-            Saya memiliki pengalaman unik sebagai operator CCTV yang mengasah ketelitian dan kemampuan analisis saya dalam memantau dan mengelola sistem keamanan. Keahlian ini saya padukan dengan kemampuan IT saya untuk memberikan solusi teknologi holistik. Ambisi saya adalah menjadi pengembang terkemuka yang menciptakan aplikasi inovatif dengan dampak positif. Saya cepat beradaptasi dengan teknologi baru, memiliki pengalaman lebih dari satu dekade di bidang IT, dan semangat tinggi untuk terus belajar dan mengajar.
+        <p class="hero-summary">
+          Full Stack Developer berpengalaman dengan lebih dari 5 tahun
+          pengalaman mengembangkan situs web dan aplikasi menggunakan teknologi
+          terbaru. Terbukti memiliki kemampuan untuk memecahkan masalah
+          perangkat lunak dan menciptakan solusi inovatif.
         </p>
+        <div class="hero-contacts">
+          <a class="contact-pill" href="mailto:yggbugi@gmail.com">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m2 7 8.5 6a2.5 2.5 0 0 0 3 0L22 7" />
+            </svg>
+            yggbugi@gmail.com
+          </a>
+          <a class="contact-pill" href="#">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Bandung, Indonesia
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="sticky-nav">
+      <div class="nav-inner">
+        <a class="nav-link" href="#pengalaman">Pengalaman</a>
+        <a class="nav-link" href="#kemampuan">Kemampuan</a>
+        <a class="nav-link" href="#pencapaian">Pencapaian</a>
+        <a class="nav-link" href="#pendidikan">Pendidikan</a>
+        <a class="nav-link" href="#surat">Surat Lamaran</a>
+      </div>
+    </nav>
+
+    <!-- PENGALAMAN -->
+    <section class="section" id="pengalaman">
+      <div class="container">
+        <div class="section-label">Karir</div>
+        <h2 class="section-title">Pengalaman Kerja</h2>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-title">Analis Data SQL</div>
+            <div class="exp-period">Nov 2013 – Sekarang</div>
+          </div>
+          <div class="exp-company">PT INDOMARCO PRISMATA · Purwakarta</div>
+          <ul class="exp-bullets">
+            <li>
+              Memanfaatkan SQL dan Excel untuk membuat laporan dan visualisasi,
+              memberikan wawasan yang lebih besar tentang perilaku pelanggan.
+            </li>
+            <li>
+              Mengembangkan dashboard real-time untuk monitoring operasional
+              perusahaan.
+            </li>
+            <li>
+              Mengoptimalkan query database MySQL dan PostgreSQL untuk performa
+              pengolahan data yang lebih cepat.
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Tentang Saya -->
-    <section id="tentang-saya" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Tentang Saya</h2>
-        <div class="space-y-6">
-            <div class="text-justify text-gray-700">
-                <p>Halo! Saya Muhamad Tajudin, dikenal juga sebagai Bugy, seorang Pengembang Full Stack dan Spesialis IT yang berbasis di Bandung. Saya memiliki pengalaman dalam pengembangan front-end dan back-end lebih dari satu dekade. Saya senang menciptakan solusi digital yang efisien dan user-friendly.</p>
-                <p>Saya menyukai tantangan, suka mempelajari teknologi baru, dan memiliki hasrat besar dalam mengajar serta berbagi ilmu di bidang IT.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-medium text-blue-700">Detail Pribadi</h3>
-                <p class="text-gray-600">🌍 Bandung, Indonesia</p>
-                <p class="text-gray-600">📆 Lahir: 27 Februari 1995</p>
-                <p class="text-gray-600">📚 Pendidikan: SMA 1 Negeri Cipeundeuy</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-medium text-blue-700">Informasi Kontak</h3>
-                <p class="text-gray-600">📞 087879643895</p>
-                <p class="text-gray-600">📧 bugidot@gmail.com</p>
-            </div>
+    <!-- KEMAMPUAN -->
+    <section class="section" id="kemampuan">
+      <div class="container">
+        <div class="section-label">Tech Stack</div>
+        <h2 class="section-title">Kemampuan Teknis</h2>
+        <div class="skills-grid">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Laravel</span>
+          <span class="skill-tag">CodeIgniter</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">VB.NET</span>
+          <span class="skill-tag">VB Script</span>
+          <span class="skill-tag">Visual Basic</span>
+          <span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">HTML &amp; CSS</span>
+          <span class="skill-tag">jQuery</span>
+          <span class="skill-tag">Apache</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag">Network Monitoring</span>
+          <span class="skill-tag">Admin CCTV</span>
         </div>
+      </div>
     </section>
 
-    <!-- Pengalaman -->
-    <section id="pengalaman" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Pengalaman</h2>
-        <div class="space-y-4">
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">Dukungan IT Senior</h3>
-                <p class="text-gray-600">Pt Indomarco Prismatama</p>
-                <p class="text-gray-600">📅 2013 - Sekarang</p>
+    <!-- PENCAPAIAN -->
+    <section class="section" id="pencapaian">
+      <div class="container">
+        <div class="section-label">Highlights</div>
+        <h2 class="section-title">Prestasi &amp; Pencapaian</h2>
+        <div class="achievements-list">
+          <div class="achievement-item">
+            <div class="achievement-icon">🚀</div>
+            <div class="achievement-text">
+              Mengembangkan aplikasi end-to-end mulai dari analisis kebutuhan
+              hingga implementasi dan maintenance.
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">Admin Gudang Pabrik Tekstil</h3>
-                <p class="text-gray-600">📅 2012</p>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">⚡</div>
+            <div class="achievement-text">
+              Mengoptimalkan performa database MySQL dan PostgreSQL untuk
+              mendukung pengolahan data yang cepat dan efisien.
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">Pengajar Home Learning Komputer</h3>
-                <p class="text-gray-600">📅 2013</p>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">📊</div>
+            <div class="achievement-text">
+              Membangun sistem monitoring dan dashboard real-time yang
+              meningkatkan efektivitas operasional.
             </div>
-            <div class="experience-item p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">Pengajar Kursus LPK</h3>
-                <p class="text-gray-600">📅 2012 - 2013</p>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">🔗</div>
+            <div class="achievement-text">
+              Mengintegrasikan berbagai layanan dan API untuk otomatisasi proses
+              bisnis dan notifikasi.
             </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">📝</div>
+            <div class="achievement-text">
+              Menyusun dokumentasi teknis serta memberikan pelatihan kepada
+              pengguna agar implementasi sistem berjalan optimal.
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">🌐</div>
+            <div class="achievement-text">
+              Berhasil meningkatkan efisiensi proses kerja melalui digitalisasi
+              dan pengembangan aplikasi berbasis web yang terintegrasi.
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Keterampilan -->
-    <section id="keterampilan" class="container mx-auto px-6 py-8 mt-8 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Keterampilan</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <div class="skill-item"><i class="fas fa-globe mr-2"></i>Pengembangan Web</div>
-            <div class="skill-item"><i class="fas fa-desktop mr-2"></i>Aplikasi Desktop</div>
-            <div class="skill-item"><i class="fab fa-php mr-2"></i>PHP</div>
-            <div class="skill-item"><i class="fab fa-laravel mr-2"></i>Laravel</div>
-            <div class="skill-item"><i class="fas fa-code mr-2"></i>CodeIgniter</div>
-            <div class="skill-item"><i class="fas fa-database mr-2"></i>MySQL</div>
-            <div class="skill-item"><i class="fas fa-database mr-2"></i>PostgreSQL</div>
-            <div class="skill-item"><i class="fab fa-html5 mr-2"></i>HTML</div>
-            <div class="skill-item"><i class="fab fa-js mr-2"></i>JavaScript</div>
-            <div class="skill-item"><i class="fas fa-network-wired mr-2"></i>Jaringan IP4</div>
-            <div class="skill-item"><i class="fas fa-video mr-2"></i>Operator CCTV</div>
-            <div class="skill-item"><i class="fab fa-react mr-2"></i>Next.js</div>
-            <div class="skill-item"><i class="fas fa-code mr-2"></i>Visual Basic</div>
+    <!-- PENDIDIKAN -->
+    <section class="section" id="pendidikan">
+      <div class="container">
+        <div class="section-label">Edukasi</div>
+        <h2 class="section-title">Kursus &amp; Sertifikasi</h2>
+        <div class="edu-list">
+          <div class="edu-card">
+            <div class="edu-info">
+              <div class="edu-name">Information Teknologi</div>
+              <div class="edu-institution">LPK BELLA — Nilai: 97</div>
+            </div>
+            <div class="edu-badge">Mei 2012 – Okt 2013</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-info">
+              <div class="edu-name">Microsoft Office</div>
+              <div class="edu-institution">LPK BELLA — Nilai: 98</div>
+            </div>
+            <div class="edu-badge">Mei 2013 – Okt 2013</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Kontak -->
-    <section id="kontak" class="container mx-auto px-6 py-8 mt-8 mb-10 bg-white bg-opacity-95 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4 border-b-2 border-blue-300 pb-2">Kontak</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">📞 Hubungi Saya</h3>
-                <p class="text-gray-600">087879643895</p>
-            </div>
-            <div class="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition duration-300">
-                <h3 class="text-lg font-medium">📧 Email Saya</h3>
-                <p class="text-gray-600">bugidot@gmail.com</p>
-            </div>
+    <!-- SURAT LAMARAN -->
+    <section class="section" id="surat">
+      <div class="container">
+        <div class="section-label">Cover Letter</div>
+        <h2 class="section-title">Surat Lamaran Pekerjaan</h2>
+        <div class="letter-box">
+          <div class="letter-text">
+            Dengan hormat, Saya mengajukan lamaran untuk bergabung di perusahaan
+            Bapak/Ibu pada posisi yang sesuai dengan kualifikasi dan pengalaman
+            yang saya miliki. Saya merupakan Full Stack Developer yang
+            berpengalaman dalam mengembangkan aplikasi berbasis web secara
+            end-to-end, mulai dari analisis kebutuhan, perancangan sistem,
+            pengembangan frontend dan backend, pengelolaan database, pengujian,
+            hingga implementasi dan pemeliharaan. Saya menguasai teknologi
+            seperti PHP, Laravel, CodeIgniter, JavaScript, Node.js, Python,
+            VB.NET, MySQL, PostgreSQL, HTML, CSS, Bootstrap, dan jQuery. Selain
+            memiliki kemampuan teknis, saya terbiasa bekerja secara disiplin,
+            bertanggung jawab, dan mampu beradaptasi dengan cepat baik secara
+            individu maupun dalam tim. Saya yakin dapat memberikan kontribusi
+            positif bagi perusahaan melalui solusi yang efektif dan inovatif.
+            Sebagai bahan pertimbangan, saya melampirkan Curriculum Vitae (CV)
+            dan dokumen pendukung lainnya. Besar harapan saya untuk memperoleh
+            kesempatan wawancara agar dapat menjelaskan lebih lanjut mengenai
+            kualifikasi yang saya miliki. Demikian surat lamaran ini saya
+            sampaikan. Atas perhatian dan kesempatan yang diberikan, saya
+            ucapkan terima kasih.
+          </div>
+          <div class="letter-sign">Hormat saya,<br />Muhamad Tajudin</div>
         </div>
-        <div class="flex justify-center gap-6 mt-6">
-            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-github"></i></a>
-            <a href="https://www.tiktok.com/@_bugy27?_t=ZS-8wBS9n8WIbq&_r=1" class="text-blue-600 hover:text-blue-400"><i class="fab fa-tiktok"></i></a>
-            <a href="#" class="text-blue-600 hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-        </div>
+      </div>
     </section>
 
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        }
-    </script>
-</body>
+    <footer class="footer">
+      <div class="container">
+        <p>
+          © 2025 Muhamad Tajudin · Full Stack Developer · Bandung, Indonesia
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
